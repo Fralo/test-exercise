@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form</title>
-</head>
-
-<body>
-    <form method="POST" action="/upload" enctype="multipart/form-data">
+@extends('layout')
+@section('content')
+    <form class="main-form" method="POST" action="/upload" enctype="multipart/form-data">
         @csrf
-
+        <div>
         <label for="file-name">Nome del file</label>
 
         <input id="file-name" name="file-name" type="text" placeholder="nome dell'immagine da caricare"
             value="{{ old('file-name') }}">
 
         @error('file-name')
-            <div>{{ $message }}</div>
+            <div class="error">{{ $message }}</div>
         @enderror
+        </div>
+        <div>
+            <label for="image">Seleziona il file da caricare</label>
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg">
 
-        <label for="image">Seleziona il file da caricare</label>
-        <input type="file" id="image" name="image" accept="image/png, image/jpeg">
-
-        @error('image')
-            <div>{{ $message }}</div>
-        @enderror
+            @error('image')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
         <button type="submit">Invia</button>
     </form>
-</body>
-
-</html>
+@endsection
