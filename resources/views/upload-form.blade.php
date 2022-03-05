@@ -14,7 +14,8 @@
 
         <label for="file-name">Nome del file</label>
 
-        <input id="file-name" name="file-name" type="text">
+        <input id="file-name" name="file-name" type="text" placeholder="nome dell'immagine da caricare"
+            value="{{ old('file-name') }}">
 
         @error('file-name')
             <div>{{ $message }}</div>
