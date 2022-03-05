@@ -12,8 +12,8 @@ class UploadController extends Controller
             'image' => ['required', 'mimes:png,jpg', 'max:1024'],
         ]);
 
-        $path = $validatedData['image']->storeAs('uploaded',  $this->getFileName($validatedData['file-name'], $validatedData['image']->extension()));
-        
+        $path = $validatedData['image']->storeAs(config('app.upload_path'),  $this->getFileName($validatedData['file-name'], $validatedData['image']->extension()));
+
         return view('success', [
             'savedPath' => $path
         ]);

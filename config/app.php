@@ -194,4 +194,6 @@ return [
         // ...
     ])->toArray(),
 
+    'upload_path' => env('DESTINATION_FOLDER_NAME', 'uploaded'),
+
 ];
